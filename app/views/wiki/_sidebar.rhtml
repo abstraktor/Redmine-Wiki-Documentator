@@ -1,0 +1,23 @@
+<% if @wiki && @wiki.sidebar -%>
+  <%= textilizable @wiki.sidebar.content, :text %>
+<% end -%>
+
+<% if @page -%>
+  <h3>Nutzerdokumentation</h3>
+  <% if @page.customer_documentation -%>
+	  Diese Seite geh&ouml;rt zur Nutzerdokumentation! Jeder Kunde kann sie einsehen.<br /><br />
+		<%=link_to_if_authorized "Diese Seite soll keine Dokumentation mehr sein!", {:controller=>'wiki', :project_id=>@project, :action=>'customer_documentation', :id => @page.title, :customer_documentation => false},:method => :put, :class=>'icon icon-unlock' %>
+  <% else %>
+	  Diese Seite kann der Nutzerdokumentation zug&auml;ngig gemacht werden.<br /><br />
+		<%=link_to_if_authorized "Diese Seite zur Nutzerdokumentation machen", {:controller=>'wiki', :project_id=>@project, :action=>'customer_documentation', :id => @page.title, :customer_documentation => true},:method => :put, :class=>'icon icon-lock'%>
+	<% end %>
+	<%# form_for :content, @page.content_for_version(params[:version), :url => { :action => 'update', :id => @page.title}, :html => {:method => :put, :multipart => true} do |f| %>
+	  <%# f.hidden_field :version %>
+		<%# %>
+<% end %>
+
+<h3><%= l(:label_wiki) %></h3>
+
+<%= link_to l(:field_start_page), {:action => 'show', :id => nil} %><br />
+<%= link_to l(:label_index_by_title), {:action => 'index'} %><br />
+<%= link_to l(:label_index_by_date), {:action => 'date_index'} %><br />

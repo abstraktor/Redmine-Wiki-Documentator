@@ -1,0 +1,25 @@
+= Redmine Customer Documentator
+  Mark wiki pages as user documentation and allow explicit access to users that are not allowed to view the wiki.
+
+== Installing Redmine Customer Documentator 
+  1) script/plugin install git://github.com/edtsech/redmine_wiki_permissions.git
+
+  2) rake db:migrate_plugins
+ 
+  3) switch on "wiki" module in project/settings/ > Modules
+  
+  4) mark wiki-pages as customer documentation (see sidebar of a wiki page)
+
+  5) give customers the right to view the documentation
+
+== To turn off Redmine Customer Documentator
+  
+  project/settings/ > Modules
+
+== Contributions
+
+ * Bastian Kruck (bak@human-factors.de)
+
+== Credits
+  Thanks to the Redmine Wiki Permissions Plugin.
+ * Jonas Van der Aa (Dutch translations)
