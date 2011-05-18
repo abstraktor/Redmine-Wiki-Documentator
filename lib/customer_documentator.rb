@@ -30,7 +30,7 @@ module CustomerDocumentator
             
         def can_view? page          
 				  admin or
-					allowed_to? :view_wiki, page.wiki.project or 
+					allowed_to? :view_wiki_pages, page.wiki.project or 
 					(allowed_to? :show_customer_documentation, page.wiki.project and page.customer_documentation )
         end
       end
